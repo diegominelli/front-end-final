@@ -20,6 +20,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomValidators } from '@narik/custom-validators';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -42,7 +43,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private contaService: ContaService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.validationMessages = {
       email: {
@@ -109,10 +111,19 @@ export class CadastroComponent implements OnInit, AfterViewInit {
     this.cadastroForm.reset();
     this.errors = [];
     this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
-    this.router.navigate(['/home']);
+    let toast = this.toastr.success(
+      'Registro realizado com sucesso!',
+      'Bem vindo!!!'
+    );
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 
   processarFalha(fail: any) {
     this.errors = fail.error.errors;
+    this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 }
