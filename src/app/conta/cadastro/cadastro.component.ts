@@ -21,6 +21,7 @@ import {
 } from '@angular/forms';
 import { CustomValidators } from '@narik/custom-validators';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -38,7 +39,11 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   genericValidation: GenericValidation;
   displayMessage: DisplayMessage = {};
 
-  constructor(private fb: FormBuilder, private contaService: ContaService) {
+  constructor(
+    private fb: FormBuilder,
+    private contaService: ContaService,
+    private router: Router
+  ) {
     this.validationMessages = {
       email: {
         required: 'Informe o e-mail',
@@ -100,7 +105,14 @@ export class CadastroComponent implements OnInit, AfterViewInit {
     }
   }
 
-  processarSucesso(response: any) {}
+  processarSucesso(response: any) {
+    this.cadastroForm.reset();
+    this.errors = [];
+    this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
+    this.router.navigate(['/home']);
+  }
 
-  processarFalha(fail: any) {}
+  processarFalha(fail: any) {
+    this.errors = fail.error.errors;
+  }
 }
