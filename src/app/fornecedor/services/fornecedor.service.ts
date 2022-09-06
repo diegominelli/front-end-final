@@ -48,13 +48,15 @@ export class FornecedorService extends BaseService {
     return new Observable<Fornecedor>();
   }
 
-  // atualizarEndereco(endereco: Endereco): Observable<Endereco> {
-  //     return this.http
-  //         .put(this.UrlServiceV1 + "fornecedores/endereco/" + endereco.id, endereco, super.ObterAuthHeaderJson())
-  //         .pipe(
-  //             map(super.extractData),
-  //             catchError(super.serviceError));
-  // }
+  atualizarEndereco(endereco: Endereco): Observable<Endereco> {
+    return this.http
+      .put(
+        this.UrlServiceV1 + 'fornecedores/endereco/' + endereco.id,
+        endereco,
+        super.ObterAuthHeaderJson()
+      )
+      .pipe(map(super.extractData), catchError(super.serviceError));
+  }
 
   consultarCep(cep: string): Observable<CepConsulta> {
     return this.http

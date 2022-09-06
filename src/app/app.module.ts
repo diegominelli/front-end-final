@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
@@ -8,14 +9,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavegacaoModule } from './navegacao/navegacao.module';
-import { DetalhesComponent } from './fornecedor/detalhes/detalhes.component';
-import { EditarComponent } from './fornecedor/editar/editar.component';
-import { ExcluirComponent } from './fornecedor/excluir/excluir.component';
-import { ListaComponent } from './fornecedor/lista/lista.component';
-import { NovoComponent } from './fornecedor/novo/novo.component';
+
+import { ErrorInterceptor } from './services/error.handler.service';
+
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+];
 
 @NgModule({
-  declarations: [AppComponent, DetalhesComponent, EditarComponent, ExcluirComponent, ListaComponent, NovoComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,8 +25,9 @@ import { NovoComponent } from './fornecedor/novo/novo.component';
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

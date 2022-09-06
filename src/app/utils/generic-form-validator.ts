@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
 
-export class GenericValidation {
+export class GenericValidator {
   constructor(private validationMessages: ValidationMessages) {}
 
   processarMensagens(container: FormGroup): { [key: string]: string } {

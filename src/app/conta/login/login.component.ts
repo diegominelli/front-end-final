@@ -1,8 +1,8 @@
 import {
   ValidationMessages,
-  GenericValidation,
+  GenericValidator,
   DisplayMessage,
-} from './../../utils/generic-form-validation';
+} from '../../utils/generic-form-validator';
 import { ContaService } from './../services/conta.service';
 import { Usuario } from './../models/usuario';
 import {
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   usuario: Usuario;
 
   validationMessages: ValidationMessages;
-  genericValidation: GenericValidation;
+  genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
   constructor(
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres',
       },
     };
-    this.genericValidation = new GenericValidation(this.validationMessages);
+    this.genericValidator = new GenericValidator(this.validationMessages);
   }
 
   ngOnInit(): void {
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
       (formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur')
     );
     merge(...controlBlurs).subscribe(() => {
-      this.displayMessage = this.genericValidation.processarMensagens(
+      this.displayMessage = this.genericValidator.processarMensagens(
         this.loginForm
       );
     });

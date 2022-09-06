@@ -17,18 +17,10 @@ const fornecedorRouterConfig: Routes = [
     component: FornecedorAppComponent,
     children: [
       { path: 'listar-todos', component: ListaComponent },
-      {
-        path: 'adicionar-novo',
-        component: NovoComponent,
-        canDeactivate: [FornececedorGuard],
-        canActivate: [FornececedorGuard],
-        data: [{ claim: { nome: 'Fornecedor', valor: 'Adicionar' } }],
-      },
+      { path: 'adicionar-todos', component: NovoComponent },
       {
         path: 'editar/:id',
         component: EditarComponent,
-        canActivate: [FornececedorGuard],
-        data: [{ claim: { nome: 'Fornecedor', valor: 'Atualizar' } }],
         resolve: {
           fornecedor: FornecedorResolve,
         },
@@ -43,12 +35,42 @@ const fornecedorRouterConfig: Routes = [
       {
         path: 'excluir/:id',
         component: ExcluirComponent,
-        canActivate: [FornececedorGuard],
-        data: [{ claim: { nome: 'Fornecedor', valor: 'Excluir' } }],
         resolve: {
           fornecedor: FornecedorResolve,
         },
       },
+      // {
+      //   path: 'adicionar-novo',
+      //   component: NovoComponent,
+      //   canDeactivate: [FornececedorGuard],
+      //   canActivate: [FornececedorGuard],
+      //   data: [{ claim: { nome: 'Fornecedor', valor: 'Adicionar' } }],
+      // },
+      // {
+      //   path: 'editar/:id',
+      //   component: EditarComponent,
+      //   canActivate: [FornececedorGuard],
+      //   data: [{ claim: { nome: 'Fornecedor', valor: 'Atualizar' } }],
+      //   resolve: {
+      //     fornecedor: FornecedorResolve,
+      //   },
+      // },
+      // {
+      //   path: 'detalhes/:id',
+      //   component: DetalhesComponent,
+      //   resolve: {
+      //     fornecedor: FornecedorResolve,
+      //   },
+      // },
+      // {
+      //   path: 'excluir/:id',
+      //   component: ExcluirComponent,
+      //   canActivate: [FornececedorGuard],
+      //   data: [{ claim: { nome: 'Fornecedor', valor: 'Excluir' } }],
+      //   resolve: {
+      //     fornecedor: FornecedorResolve,
+      //   },
+      // },
     ],
   },
 ];

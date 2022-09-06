@@ -25,10 +25,10 @@
               type="text"
               placeholder="Nome (requerido)"
               formControlName="nome"
-              [ngClass]="{ 'is-invalid': displayMessage.nome }"
+              [ngClass]="{ 'is-invalid': displayMessage['nome'] }"
             />
-            <span class="text-danger" *ngIf="displayMessage.nome">
-              <p [innerHTML]="displayMessage.nome"></p>
+            <span class="text-danger" *ngIf="displayMessage['nome']">
+              <p [innerHTML]="displayMessage['nome']"></p>
             </span>
           </div>
         </div>
@@ -44,14 +44,14 @@
               formControlName="documento"
               [textMask]="
                 tipoFornecedorForm().value === '1'
-                  ? { mask: MASKS.cpf.textMask }
-                  : { mask: MASKS.cnpj.textMask }
+                  ? { mask: MASKS['cnpj'].textMask }
+                  : { mask: MASKS['cnpj'].textMask }
               "
-              [ngClass]="{ 'is-invalid': displayMessage.documento }"
+              [ngClass]="{ 'is-invalid': displayMessage['documento'] }"
             />
 
-            <span class="text-danger" *ngIf="displayMessage.documento">
-              <p [innerHTML]="displayMessage.documento"></p>
+            <span class="text-danger" *ngIf="displayMessage['documento']">
+              <p [innerHTML]="displayMessage['documento']"></p>
             </span>
           </div>
         </div>
@@ -104,11 +104,11 @@
                 (blur)="buscarCep($event.target.value)"
                 formControlName="cep"
                 cep
-                [textMask]="{ mask: MASKS.cep.textMask }"
-                [ngClass]="{ 'is-invalid': displayMessage.cep }"
+                [textMask]="{ mask: MASKS['cep'].textMask }"
+                [ngClass]="{ 'is-invalid': displayMessage['cep'] }"
               />
-              <span class="text-danger" *ngIf="displayMessage.cep">
-                <p [innerHTML]="displayMessage.cep"></p>
+              <span class="text-danger" *ngIf="displayMessage['cep']">
+                <p [innerHTML]="displayMessage['cep']"></p>
               </span>
             </div>
           </div>
@@ -121,10 +121,10 @@
                 type="text"
                 placeholder="Logradouro (requerido)"
                 formControlName="logradouro"
-                [ngClass]="{ 'is-invalid': displayMessage.logradouro }"
+                [ngClass]="{ 'is-invalid': displayMessage['logradouro'] }"
               />
-              <span class="text-danger" *ngIf="displayMessage.logradouro">
-                <p [innerHTML]="displayMessage.logradouro"></p>
+              <span class="text-danger" *ngIf="displayMessage['logradouro']">
+                <p [innerHTML]="displayMessage['logradouro']"></p>
               </span>
             </div>
           </div>
@@ -137,10 +137,10 @@
                 type="text"
                 placeholder="Número (requerido)"
                 formControlName="numero"
-                [ngClass]="{ 'is-invalid': displayMessage.numero }"
+                [ngClass]="{ 'is-invalid': displayMessage['numero'] }"
               />
-              <span class="text-danger" *ngIf="displayMessage.numero">
-                <p [innerHTML]="displayMessage.numero"></p>
+              <span class="text-danger" *ngIf="displayMessage['numero']">
+                <p [innerHTML]="displayMessage['numero']"></p>
               </span>
             </div>
           </div>
@@ -153,10 +153,10 @@
                 type="text"
                 placeholder="Complemento"
                 formControlName="complemento"
-                [ngClass]="{ 'is-invalid': displayMessage.complemento }"
+                [ngClass]="{ 'is-invalid': displayMessage['complemento'] }"
               />
-              <span class="text-danger" *ngIf="displayMessage.complemento">
-                <p [innerHTML]="displayMessage.complemento"></p>
+              <span class="text-danger" *ngIf="displayMessage['complemento']">
+                <p [innerHTML]="displayMessage['complemento']"></p>
               </span>
             </div>
           </div>
@@ -169,10 +169,10 @@
                 type="text"
                 placeholder="Bairro (requerido)"
                 formControlName="bairro"
-                [ngClass]="{ 'is-invalid': displayMessage.bairro }"
+                [ngClass]="{ 'is-invalid': displayMessage['bairro'] }"
               />
-              <span class="text-danger" *ngIf="displayMessage.bairro">
-                <p [innerHTML]="displayMessage.bairro"></p>
+              <span class="text-danger" *ngIf="displayMessage['bairro']">
+                <p [innerHTML]="displayMessage['bairro']"></p>
               </span>
             </div>
           </div>
@@ -185,10 +185,10 @@
                 type="text"
                 placeholder="Cidade (requerido)"
                 formControlName="cidade"
-                [ngClass]="{ 'is-invalid': displayMessage.cidade }"
+                [ngClass]="{ 'is-invalid': displayMessage['cidade'] }"
               />
-              <span class="text-danger" *ngIf="displayMessage.cidade">
-                <p [innerHTML]="displayMessage.cidade"></p>
+              <span class="text-danger" *ngIf="displayMessage['cidade']">
+                <p [innerHTML]="displayMessage['cidade']"></p>
               </span>
             </div>
           </div>
@@ -199,7 +199,7 @@
                 class="form-control"
                 id="estado"
                 formControlName="estado"
-                [ngClass]="{ 'is-invalid': displayMessage.estado }"
+                [ngClass]="{ 'is-invalid': displayMessage['estado'] }"
               >
                 <option value="">Estado</option>
                 <option value="AC">Acre</option>
@@ -230,8 +230,8 @@
                 <option value="SE">Sergipe</option>
                 <option value="TO">Tocantins</option>
               </select>
-              <span class="text-danger" *ngIf="displayMessage.estado">
-                <p [innerHTML]="displayMessage.estado"></p>
+              <span class="text-danger" *ngIf="displayMessage['estado']">
+                <p [innerHTML]="displayMessage['estado']"></p>
               </span>
             </div>
           </div>

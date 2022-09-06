@@ -1,8 +1,8 @@
 import {
   ValidationMessages,
-  GenericValidation,
+  GenericValidator,
   DisplayMessage,
-} from './../../utils/generic-form-validation';
+} from '../../utils/generic-form-validator';
 import { ContaService } from './../services/conta.service';
 import { Usuario } from './../models/usuario';
 import {
@@ -37,7 +37,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   usuario: Usuario;
 
   validationMessages: ValidationMessages;
-  genericValidation: GenericValidation;
+  genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
   mudancasNaoSalvas: boolean;
@@ -63,7 +63,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
         equalTo: 'As senhas não conferem',
       },
     };
-    this.genericValidation = new GenericValidation(this.validationMessages);
+    this.genericValidator = new GenericValidator(this.validationMessages);
   }
 
   ngOnInit(): void {
@@ -89,7 +89,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       (formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur')
     );
     merge(...controlBlurs).subscribe(() => {
-      this.displayMessage = this.genericValidation.processarMensagens(
+      this.displayMessage = this.genericValidator.processarMensagens(
         this.cadastroForm
       );
       this.mudancasNaoSalvas = true;

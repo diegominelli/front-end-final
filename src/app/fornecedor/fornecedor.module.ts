@@ -1,3 +1,4 @@
+import { FornecedorResolve } from './services/fornecedores.resolve';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +31,6 @@ import { FornecedorService } from './services/fornecedor.service';
     NgBrazil,
     TextMaskModule,
   ],
-  providers: [FornecedorService],
+  providers: [FornecedorService, FornecedorResolve],
 })
 export class FornecedorModule {}
