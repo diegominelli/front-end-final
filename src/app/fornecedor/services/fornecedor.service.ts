@@ -41,7 +41,13 @@ export class FornecedorService extends BaseService {
   }
 
   atualizarFornecedor(fornecedor: Fornecedor): Observable<Fornecedor> {
-    return new Observable<Fornecedor>();
+    return this.http
+      .put(
+        this.UrlServiceV1 + 'fornecedores/' + fornecedor.id,
+        fornecedor,
+        super.ObterAuthHeaderJson()
+      )
+      .pipe(map(super.extractData), catchError(super.serviceError));
   }
 
   excluirFornecedor(id: string): Observable<Fornecedor> {
