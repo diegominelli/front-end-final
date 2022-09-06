@@ -13,6 +13,7 @@ import { ExcluirComponent } from './excluir/excluir.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { NovoComponent } from './novo/novo.component';
 import { FornecedorService } from './services/fornecedor.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FornecedorService } from './services/fornecedor.service';
     ReactiveFormsModule,
     NgBrazil,
     TextMaskModule,
+    NgxSpinnerModule,
   ],
   providers: [FornecedorService, FornecedorResolve],
 })

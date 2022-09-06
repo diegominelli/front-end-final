@@ -21,6 +21,7 @@ import { FornecedorService } from '../services/fornecedor.service';
 import { FormBaseComponent } from 'src/app/base-components/form-base.component';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { GenericValidator } from 'src/app/utils/generic-form-validator';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-editar',
@@ -50,7 +51,8 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private modalService: NgbModal // private spinner: NgxSpinnerService
+    private modalService: NgbModal,
+    private spinner: NgxSpinnerService
   ) {
     super();
 
@@ -91,7 +93,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.spinner.show();
+    this.spinner.show();
 
     this.fornecedorForm = this.fb.group({
       id: '',
@@ -115,9 +117,9 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
     this.preencherForm();
 
-    // setTimeout(() => {
-    //   this.spinner.hide();
-    // }, 1000);
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
   }
 
   preencherForm() {
